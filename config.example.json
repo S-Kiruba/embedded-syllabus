@@ -1,0 +1,37 @@
+{
+  "_readme": "Copy this to data/config.json and fill in only the channels you want. data/config.json is gitignored.",
+  "smtp": {
+    "_gmail": "Gmail: host smtp.gmail.com, port 465, secure true, pass = a 16-char App Password (not your login password).",
+    "enabled": false,
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "secure": true,
+    "user": "you@gmail.com",
+    "pass": "app-password-here",
+    "from": "Learning Tracker <you@gmail.com>"
+  },
+  "whatsapp": {
+    "_providers": "Set provider to \"meta\" (WhatsApp Cloud API) or \"twilio\" (Twilio WhatsApp sandbox / sender).",
+    "enabled": false,
+    "provider": "meta",
+    "meta": {
+      "apiBase": "https://graph.facebook.com/v21.0",
+      "phoneNumberId": "000000000000000",
+      "accessToken": "EAAG...",
+      "template": "",
+      "language": "en",
+      "_template": "Leave template empty to send a free-form text (only works inside a 24h customer-service window). Set it to an approved template name to send outside that window."
+    },
+    "twilio": {
+      "apiBase": "https://api.twilio.com",
+      "accountSid": "ACxxxxxxxx",
+      "authToken": "xxxxxxxx",
+      "from": "whatsapp:+14155238886"
+    }
+  },
+  "desktop": {
+    "_note": "Windows toast via PowerShell. Works only when the server runs on Windows.",
+    "enabled": true
+  },
+  "appUrl": "http://127.0.0.1:5178"
+}

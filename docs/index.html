@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embedded Systems Learning Tracker</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2335d0ba'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='monospace' font-weight='bold' fill='%23042'>&#123;&#125;</text></svg>">
+<link rel="stylesheet" href="styles.css">
+<meta name="description" content="A free, emulator-first syllabus for embedded software engineering: 13 stages, project gates, and a progress tracker that runs entirely in your browser.">
+<meta name="color-scheme" content="dark light">
+</head>
+<body>
+
+<!-- auth removed: the static build has no server and no accounts -->
+
+<!-- ============================ APP ============================ -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <button class="icon-btn hidden" id="menuToggle" title="Menu" style="margin-right:-4px">&#9776;</button>
+    <div class="brand">
+      <div class="mark">ES</div>
+      <div class="name">Embedded Systems<small>Learning Tracker</small></div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button data-view="course" class="on"><span>&#9635;</span><span class="lbl">Course</span></button>
+      <button data-view="dashboard"><span>&#9679;</span><span class="lbl">Dashboard</span></button>
+      <button data-view="history"><span>&#8635;</span><span class="lbl">History</span></button>
+      <button data-view="notes"><span>&#9998;</span><span class="lbl">Notes</span><span class="count" id="noteCount">0</span></button>
+    </nav>
+
+    <div class="search-wrap">
+      <span class="ico">&#9906;</span>
+      <input id="search" type="search" placeholder="Search resources, topics, notes&hellip;" autocomplete="off">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="top-right">
+      <button class="icon-btn" id="bellBtn" title="Reminders">&#128276;<span class="bell-dot hidden" id="bellDot"></span></button>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">&#9681;</button>
+      <button class="avatar" id="avatar" title="Account">?</button>
+    </div>
+  </header>
+
+  <div class="menu hidden" id="userMenu">
+    <div class="who">
+      <strong id="menuName">&nbsp;</strong>
+      <span id="menuEmail"></span>
+      <div style="margin-top:5px"><code id="menuId"></code></div>
+    </div>
+    <button data-act="reminders">&#128276;&nbsp; Reminders &amp; alarms</button>
+    <button data-act="profile">&#9881;&nbsp; Account settings</button>
+    <button data-act="export">&#8681;&nbsp; Export my data (JSON)</button>
+    <button data-act="reset" class="danger">&#9888;&nbsp; Reset all progress</button>
+    <button data-act="logout" class="danger">&#8629;&nbsp; Sign out</button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div id="view-course"    class="view"></div>
+      <div id="view-dashboard" class="view hidden"></div>
+      <div id="view-history"   class="view hidden"></div>
+      <div id="view-notes"     class="view hidden"></div>
+    </main>
+  </div>
+</div>
+
+<div id="overlayRoot"></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="course-data.js"></script>
+<script src="md.js"></script>
+<script src="static-api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

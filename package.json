@@ -1,0 +1,17 @@
+{
+  "name": "embedded-systems-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Emulator-first embedded software syllabus with a progress tracker. Runs locally on Node with accounts and reminders, or as a static site on GitHub Pages.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "syllabus": "node tools/buildSyllabus.js",
+    "static": "node tools/buildStatic.js",
+    "links": "node tools/checkLinks.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,8 @@
+node_modules/
+data/tracker.db
+data/tracker.db-*
+data/course.json
+data/config.json
+.env
+
+# docs/ is the published GitHub Pages build - it IS committed.

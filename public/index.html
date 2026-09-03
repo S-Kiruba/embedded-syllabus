@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Embedded Systems Learning Tracker</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2335d0ba'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='monospace' font-weight='bold' fill='%23042'>&#123;&#125;</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- ============================ AUTH ============================ -->
+<section id="auth" class="hidden">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="mark">ES</div>
+      <div>
+        <div style="font-weight:700">Embedded Systems</div>
+        <div style="font-size:11px;color:var(--text-3);letter-spacing:.05em;text-transform:uppercase">Learning Tracker</div>
+      </div>
+    </div>
+    <h1 id="authTitle">Welcome back</h1>
+    <p class="sub" id="authSub">Sign in to pick up your course where you left off.</p>
+
+    <div class="tabs">
+      <button type="button" data-mode="login" class="on">Sign in</button>
+      <button type="button" data-mode="register">Create account</button>
+    </div>
+
+    <div id="authMsg" class="form-msg hidden"></div>
+
+    <form id="authForm" autocomplete="on">
+      <div class="field" id="nameField" hidden>
+        <label for="au-name">Display name</label>
+        <input class="input" id="au-name" name="name" placeholder="Kirubakaran" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="au-email">Email address</label>
+        <input class="input" id="au-email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="au-pass">Password</label>
+        <input class="input" id="au-pass" name="password" type="password" placeholder="At least 8 characters" required minlength="8" autocomplete="current-password">
+      </div>
+      <button class="btn primary" style="width:100%;justify-content:center" id="authSubmit" type="submit">Sign in</button>
+    </form>
+
+    <p class="auth-foot">
+      Your account is keyed to your email address &mdash; progress, history and notes are stored per user
+      in a local SQLite database on this machine.
+    </p>
+  </div>
+</section>
+
+<!-- ============================ APP ============================ -->
+<div id="app" class="hidden">
+  <header class="topbar">
+    <button class="icon-btn hidden" id="menuToggle" title="Menu" style="margin-right:-4px">&#9776;</button>
+    <div class="brand">
+      <div class="mark">ES</div>
+      <div class="name">Embedded Systems<small>Learning Tracker</small></div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <button data-view="course" class="on"><span>&#9635;</span><span class="lbl">Course</span></button>
+      <button data-view="dashboard"><span>&#9679;</span><span class="lbl">Dashboard</span></button>
+      <button data-view="history"><span>&#8635;</span><span class="lbl">History</span></button>
+      <button data-view="notes"><span>&#9998;</span><span class="lbl">Notes</span><span class="count" id="noteCount">0</span></button>
+    </nav>
+
+    <div class="search-wrap">
+      <span class="ico">&#9906;</span>
+      <input id="search" type="search" placeholder="Search resources, topics, notes&hellip;" autocomplete="off">
+      <kbd>/</kbd>
+    </div>
+
+    <div class="top-right">
+      <button class="icon-btn" id="bellBtn" title="Reminders">&#128276;<span class="bell-dot hidden" id="bellDot"></span></button>
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">&#9681;</button>
+      <button class="avatar" id="avatar" title="Account">?</button>
+    </div>
+  </header>
+
+  <div class="menu hidden" id="userMenu">
+    <div class="who">
+      <strong id="menuName">&nbsp;</strong>
+      <span id="menuEmail"></span>
+      <div style="margin-top:5px"><code id="menuId"></code></div>
+    </div>
+    <button data-act="reminders">&#128276;&nbsp; Reminders &amp; alarms</button>
+    <button data-act="profile">&#9881;&nbsp; Account settings</button>
+    <button data-act="export">&#8681;&nbsp; Export my data (JSON)</button>
+    <button data-act="reset" class="danger">&#9888;&nbsp; Reset all progress</button>
+    <button data-act="logout" class="danger">&#8629;&nbsp; Sign out</button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="main">
+      <div id="view-course"    class="view"></div>
+      <div id="view-dashboard" class="view hidden"></div>
+      <div id="view-history"   class="view hidden"></div>
+      <div id="view-notes"     class="view hidden"></div>
+    </main>
+  </div>
+</div>
+
+<div id="overlayRoot"></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="/md.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
